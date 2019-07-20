@@ -1,3 +1,4 @@
 {
-	"mongoURI": "mongodb+srv://patpalmerston:patpalmerston@cluster0-jp3i1.mongodb.net/test?retryWrites=true&w=majority"
+	"mongoURI": "mongodb+srv://patpalmerston:patpalmerston@cluster0-jp3i1.mongodb.net/test?retryWrites=true&w=majority",
+	"jwtSecret": "secret"
 }
