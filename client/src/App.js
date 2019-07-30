@@ -12,14 +12,12 @@ const App = () => {
 		<ContactState>
 			<Router>
 				<Fragment>
-					<div className='App'>
-						<Navbar />
-						<div className='container'>
-							<Switch>
-								<Route exact path='/' component={Home} />
-								<Route exact path='/about' component={About} />
-							</Switch>
-						</div>
+					<Navbar />
+					<div className='container'>
+						<Switch>
+							<Route exact path='/' component={Home} />
+							<Route exact path='/about' component={About} />
+						</Switch>
 					</div>
 				</Fragment>
 			</Router>

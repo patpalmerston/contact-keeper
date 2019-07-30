@@ -51,7 +51,7 @@ const ContactState = props => {
 
 	// Filter Contacts
 
-	// Clear Filters
+	// Clear Filter
 
 	return (
 		<ContactContext.Provider
