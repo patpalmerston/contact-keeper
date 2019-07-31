@@ -50,6 +50,10 @@ const ContactState = props => {
 	};
 
 	// Delete Contact
+	//needs to happen from the contactItem component becuase that is where the button is... method takes in the id andd the payload is the id
+	const deleteContact = id => {
+		dispatch({ type: DELETE_CONTACT, payload: id });
+	};
 
 	// Set Current Contact
 
@@ -64,7 +68,8 @@ const ContactState = props => {
 		<ContactContext.Provider
 			value={{
 				contacts: state.contacts,
-				addContact
+				addContact,
+				deleteContact
 			}}
 		>
 			{props.children}

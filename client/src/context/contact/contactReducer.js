@@ -15,6 +15,15 @@ export default (state, action) => {
 				...state,
 				contacts: [...state.contacts, action.payload]
 			};
+		// state.contacts is the current array and we want to use filter that takes ina function.
+		// we are returning all the ids that are not in the payload. So delete uses filter to only delete the payload id and return all other id's
+		case DELETE_CONTACT:
+			return {
+				...state,
+				contacts: state.contacts.filter(
+					contact => contact.id !== action.payload
+				)
+			};
 		default:
 			return state;
 	}
