@@ -42,6 +42,12 @@ const ContactState = props => {
 	const [state, dispatch] = useReducer(contactReducer, initialState);
 
 	// Add Contact
+	// Contact comes in and we send directly to the payload
+	const addContact = contact => {
+		//create random id with uuid
+		contact.id = uuid.v4();
+		dispatch({ type: ADD_CONTACT, payload: contact });
+	};
 
 	// Delete Contact
 
@@ -54,9 +60,11 @@ const ContactState = props => {
 	// Clear Filter
 
 	return (
+		// when ever we want to add anything to through a component through context we need to add it to value
 		<ContactContext.Provider
 			value={{
-				contacts: state.contacts
+				contacts: state.contacts,
+				addContact
 			}}
 		>
 			{props.children}
