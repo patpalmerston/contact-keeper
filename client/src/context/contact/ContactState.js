@@ -37,7 +37,8 @@ const ContactState = props => {
 				type: 'professional'
 			}
 		],
-		current: null
+		current: null,
+		filtered: null
 	};
 
 	const [state, dispatch] = useReducer(contactReducer, initialState);
@@ -72,20 +73,29 @@ const ContactState = props => {
 	};
 
 	// Filter Contacts
+	const filterContacts = text => {
+		dispatch({ type: FILTER_CONTACTS, payload: text });
+	};
 
 	// Clear Filter
+	const clearContacts = () => {
+		dispatch({ type: CLEAR_FILTER });
+	};
 
 	return (
 		// when ever we want to add anything to through a component through context we need to add it to value
 		<ContactContext.Provider
 			value={{
 				contacts: state.contacts,
-				current: state.current,
+				current: state.current, // need to add the current part of state
+				filtered: state.filtered, // need to add the filtered part of state
 				addContact,
 				deleteContact,
 				setCurrent,
 				clearCurrent,
-				updateContact
+				updateContact,
+				filterContacts,
+				clearContacts
 			}}
 		>
 			{props.children}

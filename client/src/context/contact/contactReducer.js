@@ -41,6 +41,22 @@ export default (state, action) => {
 				...state,
 				current: null
 			};
+		case FILTER_CONTACTS:
+			return {
+				...state,
+				filtered: state.contacts.filter(contact => {
+					// regular expression set to new regex that is just the text we want to match from the payload and gi is global and case insensitive.
+					const regex = new RegExp(`${action.payload}`, 'gi');
+					// we want to return the individual name with match against the reg expression. that returns anything that matches the text that is passed in from the action payload. We also added the email.
+					return contact.name.match(regex) || contact.email.match(regex);
+				})
+			};
+		// now we want to clear the filter
+		case CLEAR_FILTER:
+			return {
+				...state,
+				filtered: null
+			};
 
 		default:
 			return state;
