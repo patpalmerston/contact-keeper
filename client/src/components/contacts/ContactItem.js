@@ -6,10 +6,10 @@ const ContactItem = ({ contact }) => {
 	const contactContext = useContext(ContactContext);
 	const { deleteContact, setCurrent, clearCurrent } = contactContext; // pull method from context
 
-	const { id, name, email, phone, type } = contact;
+	const { _id, name, email, phone, type } = contact;
 
 	const onDelete = () => {
-		deleteContact(id); // add method to onDelete method and feed it id it gets from the props
+		deleteContact(_id); // add method to onDelete method and feed it id it gets from the props
 		clearCurrent();
 	};
 
