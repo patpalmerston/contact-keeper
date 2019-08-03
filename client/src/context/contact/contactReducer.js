@@ -1,6 +1,8 @@
 import {
+	GET_CONTACTS,
 	ADD_CONTACT,
 	DELETE_CONTACT,
+	CLEAR_CONTACTS,
 	SET_CURRENT,
 	CLEAR_CURRENT,
 	UPDATE_CONTACT,
@@ -11,17 +13,25 @@ import {
 
 export default (state, action) => {
 	switch (action.type) {
+		case GET_CONTACTS:
+			return {
+				...state,
+				contacts: action.payload,
+				loading: false
+			};
 		case ADD_CONTACT:
 			return {
 				...state,
-				contacts: [...state.contacts, action.payload]
+				contacts: [...state.contacts, action.payload],
+				loading: false
 			};
 		case UPDATE_CONTACT:
 			return {
 				...state,
 				contacts: state.contacts.map(contact =>
 					contact.id === action.payload.id ? action.payload : contact
-				)
+				),
+				loading: false
 			};
 		// state.contacts is the current array and we want to use filter that takes ina function.
 		// we are returning all the ids that are not in the payload. So delete uses filter to only delete the payload id and return all other id's
@@ -30,7 +40,16 @@ export default (state, action) => {
 				...state,
 				contacts: state.contacts.filter(
 					contact => contact.id !== action.payload
-				)
+				),
+				loading: false
+			};
+		case CLEAR_CONTACTS:
+			return {
+				...state,
+				contacts: null,
+				filtered: null,
+				error: null,
+				current: null
 			};
 		case SET_CURRENT:
 			return {
