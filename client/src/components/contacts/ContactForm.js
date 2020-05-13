@@ -55,7 +55,7 @@ const ContactForm = () => {
 	const clearAll = () => {
 		clearCurrent();
 	};
-
+// check form validation
 	return (
 		<form onSubmit={onSubmit}>
 			<h2 className='text-primary'>
