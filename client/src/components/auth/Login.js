@@ -31,7 +31,7 @@ const Login = props => {
 	const { email, password } = user;
 
 	const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
-
+// form validation
 	const onSubmit = e => {
 		e.preventDefault();
 		if (email === 0 || password === 0) {
