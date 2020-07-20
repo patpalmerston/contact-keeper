@@ -1,3 +1,4 @@
 # contact-keeper
 
-https://limitless-plateau-47143.herokuapp.com/
+deployed on Heroku:
+https://salty-cove-76539.herokuapp.com/
