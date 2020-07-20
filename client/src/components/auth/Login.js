@@ -2,83 +2,84 @@ import React, { useState, useContext, useEffect } from 'react';
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
 
-const Login = props => {
-	const alertContext = useContext(AlertContext);
-	const authContext = useContext(AuthContext);
+const Login = (props) => {
+    const alertContext = useContext(AlertContext);
+    const authContext = useContext(AuthContext);
 
-	const { setAlert } = alertContext;
+    const { setAlert } = alertContext;
 
-	const { login, error, clearErrors, isAuthenticated } = authContext;
+    const { login, error, clearErrors, isAuthenticated } = authContext;
 
-	useEffect(() => {
-		if (isAuthenticated) {
-			props.history.push('/');
-		}
+    useEffect(() => {
+        if (isAuthenticated) {
+            props.history.push('/');
+        }
 
-		if (error === 'Invalid Credentials') {
-			setAlert(error, 'danger');
-			clearErrors();
-		}
-		// eslint-disable-next-line
-	}, [error, isAuthenticated, props.history]);
+        if (error === 'Invalid Credentials') {
+            setAlert(error, 'danger');
+            clearErrors();
+        }
+        // eslint-disable-next-line
+    }, [error, isAuthenticated, props.history]);
 
-	// two passwords for pass confirmation
-	const [user, setUser] = useState({
-		email: '',
-		password: ''
-	});
+    // two passwords for pass confirmation
+    const [user, setUser] = useState({
+        email: '',
+        password: '',
+    });
 
-	const { email, password } = user;
+    const { email, password } = user;
 
-	const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
-// form validation
-	const onSubmit = e => {
-		e.preventDefault();
-		if (email === 0 || password === 0) {
-			setAlert('Please fill in all fields', 'danger');
-		} else {
-			login({
-				email,
-				password
-			});
-		}
-	};
+    const onChange = (e) =>
+        setUser({ ...user, [e.target.name]: e.target.value });
+    // form validation
+    const onSubmit = (e) => {
+        e.preventDefault();
+        if (email === 0 || password === 0) {
+            setAlert('Please fill in all fields', 'danger');
+        } else {
+            login({
+                email,
+                password,
+            });
+        }
+    };
 
-	return (
-		<div className='form-container'>
-			<h1>
-				Account <span className='text-primary'>Login</span>
-				<form onSubmit={onSubmit}>
-					<div className='form-group'>
-						<label htmlFor='email'>Email Address</label>
-						<input
-							type='email'
-							name='email'
-							value={email}
-							onChange={onChange}
-							required
-						/>
-					</div>
-					<div className='form-group'>
-						<label htmlFor='password'>Password</label>
-						<input
-							type='password'
-							name='password'
-							value={password}
-							onChange={onChange}
-							required
-						/>
-					</div>
+    return (
+        <div className='form-container'>
+            <h1>
+                Account <span className='text-primary'>Login</span>
+                <form onSubmit={onSubmit}>
+                    <div className='form-group'>
+                        <label htmlFor='email'>Email Address</label>
+                        <input
+                            type='email'
+                            name='patrick@patrick.com'
+                            value={email}
+                            onChange={onChange}
+                            required
+                        />
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='password'>Password</label>
+                        <input
+                            type='password'
+                            name='patrick'
+                            value={password}
+                            onChange={onChange}
+                            required
+                        />
+                    </div>
 
-					<input
-						type='submit'
-						value='Login'
-						className='btn btn-primary btn-block'
-					/>
-				</form>
-			</h1>
-		</div>
-	);
+                    <input
+                        type='submit'
+                        value='Login'
+                        className='btn btn-primary btn-block'
+                    />
+                </form>
+            </h1>
+        </div>
+    );
 };
 
 export default Login;
