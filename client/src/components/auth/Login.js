@@ -54,7 +54,7 @@ const Login = (props) => {
                         <label htmlFor='email'>Email Address</label>
                         <input
                             type='email'
-                            name='patrick@patrick.com'
+                            name='email'
                             value={email}
                             onChange={onChange}
                             required
@@ -64,7 +64,7 @@ const Login = (props) => {
                         <label htmlFor='password'>Password</label>
                         <input
                             type='password'
-                            name='patrick'
+                            name='password'
                             value={password}
                             onChange={onChange}
                             required
