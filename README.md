@@ -4,7 +4,7 @@ You can find the deployed project at (https://salty-cove-76539.herokuapp.com/)
 <br>
 Demo Login:
 <br>
-email: patrick@patrick
+email: patrick@patrick.com
 <br>
 password: patrick
 
